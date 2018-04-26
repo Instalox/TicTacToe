@@ -14,6 +14,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 	public Action<Slot> OnClicked;
 
 	public Image SlotSymbol;
+	public Image SlotImage;
 
 	[SerializeField]
 	private SlotCoords _id;
@@ -25,6 +26,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 
 	void Start() {
 		//Grab the Image component in the child
+		SlotImage = GetComponent<Image>();
 		SlotSymbol = transform.GetChild(0).GetComponent<Image>();
 	}
 
@@ -44,6 +46,11 @@ public class Slot : MonoBehaviour, IPointerClickHandler {
 		Owner = null;
 		SlotSymbol.enabled = false;
 		IsTaken = false;
+	}
+
+	public void ChangeColor( Color backgroundColor , Color symbolColor ) {
+		SlotImage.color = backgroundColor;
+		SlotSymbol.color = symbolColor;
 	}
 }
 
